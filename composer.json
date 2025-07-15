@@ -1,0 +1,12 @@
+{
+    "name": "armin-dev/validx",
+    "description": "A modern PHP validation library.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ArminDev\\Validx\\": "src/"
+        }
+    },
+    "require": {}
+}

@@ -6,11 +6,11 @@ namespace Validx\Rules;
 use Exception;
 use Reflection;
 use ReflectionClass;
+use Validx\Exceptions\InvalidRuleException;
+use Validx\Exceptions\MissingValidateMethodException;
 
 class RuleProcessor
 {
-
-
     protected ReflectionClass $reflection;
     protected string $class;
     protected mixed $obj;
@@ -24,10 +24,10 @@ class RuleProcessor
             if ($this->reflection->hasMethod('validate')) {
                 $this->obj = $this->reflection->newInstance();
             } else {
-                throw new Exception("Class does not have 'validate' method.");
+                MissingValidateMethodException::throwWith("The class {$this->class} must implement a 'validate' method to be used as a validation rule.");
             }
         } else {
-            throw new Exception("Class {$this->class} not found.");
+            InvalidRuleException::throwWith("Invalid Rule. Please check ruleName : $this->class");
         }
 
         return $this;
@@ -35,7 +35,7 @@ class RuleProcessor
 
     public function applyRule(array $data, string $field, array $params)
     {
-        
+
         if (!isset($this->reflection)) {
             throw new Exception("Reflection for rule not set. Did you forget to call ruleName()?");
         }

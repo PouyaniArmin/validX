@@ -11,6 +11,11 @@ use const Dom\VALIDATION_ERR;
 
 class Validation
 {
+    protected $db;
+    public function __construct($db)
+    {
+        $this->db=$db;
+    }
     public function validate(array $data, array $rules)
     {
         $errors = [];
@@ -26,6 +31,7 @@ class Validation
                     $rule_name = trim($rule);
                 }
                 $ruleReflection=new RuleProcessor;
+                $ruleReflection->setDatabase($this->db);
                 $error=$ruleReflection->ruleName($rule_name)->applyRule($data,$field,$params);   
                 if (!empty($error)) {
                     $errors[$field][]=$error;

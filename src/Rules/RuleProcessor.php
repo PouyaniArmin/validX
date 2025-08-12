@@ -14,15 +14,24 @@ class RuleProcessor
     protected ReflectionClass $reflection;
     protected string $class;
     protected mixed $obj;
+    protected $db;
+    public function setDatabase($db)
+    {
+        $this->db = $db;
+    }
 
     public function ruleName(string $rule_name): self
     {
-
         $this->class = 'Validx\\Rules\\' . ucfirst($rule_name) . 'Rule';
         if (class_exists($this->class)) {
             $this->reflection = new ReflectionClass($this->class);
             if ($this->reflection->hasMethod('validate')) {
-                $this->obj = $this->reflection->newInstance();
+                $constructor = $this->reflection->getConstructor();
+                if ($constructor && $constructor->getNumberOfParameters() > 0) {
+                    $this->obj = $this->reflection->newInstance($this->db);
+                } else {
+                    $this->obj = $this->reflection->newInstance();
+                }
             } else {
                 MissingValidateMethodException::throwWith("The class {$this->class} must implement a 'validate' method to be used as a validation rule.");
             }

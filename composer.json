@@ -5,7 +5,9 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Validx\\": "src/"
+            "Validx\\": "src/",
+            "Validx\\Rules\\": "src/Rules",
+            "Validx\\Exceptions\\": "src/Exceptions"
         }
     },
     "require": {}

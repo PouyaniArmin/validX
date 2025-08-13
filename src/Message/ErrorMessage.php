@@ -13,6 +13,14 @@ enum ErrorMessage: string
     case ALPHANUMERIC = 'The %s should have only letters and numbers';
     case SECURE = 'The %s must have between 8 and 64 characters and contain at least one number, one upper case letter, one lower case letter and one special character';
     case UNIQUE = 'The %s already exists';
+    case NUMERIC = 'The %s must contain only numbers';
+    case INTEGER = 'The %s must be an integer';
+    case URL = 'The %s is not a valid URL';
+    case DATE = 'The %s is not a valid date';
+    case PHONE = 'The %s is not a valid phone number';
+    case IN = 'The %s must be one of the allowed values';
+    case FILETYPE = 'The %s must be a valid file type: %s';
+    case MAXFILESIZE = 'The %s must not be larger than %s';
 
     public function getMessage(): string
     {

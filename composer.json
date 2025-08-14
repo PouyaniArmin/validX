@@ -10,5 +10,7 @@
             "Validx\\Exceptions\\": "src/Exceptions"
         }
     },
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    }
 }

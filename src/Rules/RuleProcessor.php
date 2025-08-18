@@ -48,6 +48,9 @@ class RuleProcessor
         if (!isset($this->reflection)) {
             throw new Exception("Reflection for rule not set. Did you forget to call ruleName()?");
         }
+        if ($this->obj instanceof UniqueRule && $this->db === null) {
+            throw new Exception("Database not set for UniqueRule.");
+        }
         $pass = $this->obj->validate($data, $field, ...$params);
         if (!$pass) {
             return $this->obj->message($field, ...$params);

@@ -9,8 +9,12 @@ class MaxRule implements RuleInterface
 
     public function validate(array $data, string $field, ...$params): bool
     {
-        if (!empty($data[$field])) {
-            if (strlen($data[$field]) > $params[0]) {
+        $value = isset($data[$field]) ? trim($data[$field]) : '';
+        if ($value === '') {
+            return false;
+        }
+        if (!empty($value)) {
+            if (strlen($value) > $params[0]) {
                 return false;
             }
         }

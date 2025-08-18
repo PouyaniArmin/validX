@@ -9,7 +9,10 @@ class PhoneRule implements RuleInterface{
 
     public function validate(array $data, string $field, ...$params): bool
     {
-        $pattern='/^\+?\d{1,3}?\d{4,14}$/';
+        if (!isset($data[$field])|| !is_string($data[$field])) {
+            return false;
+        }
+        $pattern = '/^\+?\d{5,17}$/';
         if (preg_match($pattern,$data[$field])) {
             return true;
         }

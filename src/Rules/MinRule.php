@@ -10,8 +10,11 @@ class MinRule implements RuleInterface
     public function validate(array $data, string $field, ...$params): bool
     {
 
-
-        if (strlen($data[$field]) < $params[0]) {
+        $value = isset($data[$field]) ? trim($data[$field]) : '';
+        if ($value === '') {
+            return false;
+        }
+        if (strlen($value) < $params[0]) {
             return false;
         }
         return true;

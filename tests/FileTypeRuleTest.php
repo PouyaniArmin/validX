@@ -15,7 +15,7 @@ class FileTypeRuleTest extends TestCase
      * @dataProvider providerValidationCase
      */
 
-    public function testVaildation(array $data, string $field, array $allowed, $expected)
+    public function testValidation(array $data, string $field, array $allowed, $expected)
     {
         $this->assertSame($expected, $this->file->validate($data, $field, ...$allowed));
     }

@@ -12,14 +12,14 @@ class BetweenRuleTest extends TestCase
         $this->between = new BetweenRule;
     }
     /**
-     * @dataProvider ProviderVaildationCase
+     * @dataProvider providerValidationCase
      */
 
     public function testValidation(array $data, string $field, int $min, int $max, bool $expected)
     {
         $this->assertSame($expected, $this->between->validate($data, $field, $min, $max));
     }
-    public static function ProviderVaildationCase(): array
+    public static function providerValidationCase(): array
     {
         return [
             'between valid' => [['username' => 'example'], 'username', 5, 10, true],

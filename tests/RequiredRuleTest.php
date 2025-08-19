@@ -13,14 +13,14 @@ class RequiredRuleTest extends TestCase
         $this->rule = new RequiredRule;
     }
     /**
-     * @dataProvider provideValidationCases
+     * @dataProvider providerValidationCase
      */
     public function testValidation(array $data, string $field, bool $expected)
     {
         $this->assertSame($expected, $this->rule->validate($data, $field));
     }
 
-    public static function provideValidationCases(): array
+    public static function providerValidationCase(): array
     {
         return [
             'value exists' => [['name' => 'Armin'], 'name', true],

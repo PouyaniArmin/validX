@@ -14,7 +14,7 @@ class PhoneRuleTest extends TestCase
     /**
      * @dataProvider providerValidationCase
      */
-    public function testValdation(array $data, string $field, bool $expected)
+    public function testValidation(array $data, string $field, bool $expected)
     {
         $this->assertSame($expected, $this->phone->validate($data, $field));
     }

@@ -9,7 +9,7 @@ class InRuleTest extends TestCase{
         $this->in=new InRule;
     }
     /**
-     * @dateProvider providerValidationCase
+     * @dataProvider providerValidationCase
      */
     public function testValidation(array $data,string $field,array $allowed,bool $expected){
         $this->assertSame($expected,$this->in->validate($data,$field,...$allowed));

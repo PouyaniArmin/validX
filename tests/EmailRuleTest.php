@@ -14,9 +14,9 @@ class EmailRuleTest extends TestCase
     }
 
     /**
-     * @dataProvider ProviderValidationCase
+     * @dataProvider providerValidationCase
      */
-    public function testVaildation(array $data, string $field, bool $expected)
+    public function testValidation(array $data, string $field, bool $expected)
     {
         $this->assertSame($expected, $this->email->validate($data, $field));
     }

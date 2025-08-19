@@ -1,9 +1,11 @@
 <?php
 
 namespace Validx\Message;
-
+// Enum containing default error messages for validation rules
+// Each case represents a specific validation error
 enum ErrorMessage: string
 {
+    // cases
     case REQUIRED = 'Please Enter The %s';
     case EMAIL = 'The %s is not a valid email address';
     case MIN = 'The %s must have at least %s characters';
@@ -21,7 +23,7 @@ enum ErrorMessage: string
     case IN = 'The %s must be one of the allowed values';
     case FILETYPE = 'The %s must be a valid file type: %s';
     case MAXFILESIZE = 'The %s must not be larger than %s';
-
+    // Returns the message string for the error
     public function getMessage(): string
     {
         return $this->value;

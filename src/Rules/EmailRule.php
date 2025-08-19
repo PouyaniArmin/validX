@@ -1,17 +1,39 @@
-<?php 
+    <?php
 
-namespace Validx\Rules;
+    namespace Validx\Rules;
 
-use Validx\Message\ErrorMessage;
+    use Validx\Message\ErrorMessage;
 
-class EmailRule implements RuleInterface{
-
-    public function validate(array $data, string $field, ...$params): bool
+    /**
+     * EmailRule
+     * 
+     * Validates whether a given field contains a valid email address.
+     */
+    class EmailRule implements RuleInterface
     {
-        return filter_var($data[$field],FILTER_VALIDATE_EMAIL);    
+        /**
+         * Validate if the field value is a valid email address.
+         *
+         * @param array $data   Input data array
+         * @param string $field Field name to validate
+         * @param mixed ...$params Additional parameters (not used here)
+         * 
+         * @return bool True if valid email, false otherwise
+         */
+        public function validate(array $data, string $field, ...$params): bool
+        {
+            return filter_var($data[$field], FILTER_VALIDATE_EMAIL);
+        }
+        /**
+         * Get the error message for invalid email values.
+         *
+         * @param string $field Field name
+         * @param mixed ...$params Additional parameters (not used here)
+         * 
+         * @return string Error message
+         */
+        public function message(string $field, ...$params): string
+        {
+            return sprintf(ErrorMessage::EMAIL->getMessage(), ucfirst($field));
+        }
     }
-    public function message(string $field, ...$params): string
-    {
-        return sprintf(ErrorMessage::EMAIL->getMessage(),ucfirst($field));
-    }
-}

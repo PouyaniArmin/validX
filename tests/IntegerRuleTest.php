@@ -23,12 +23,19 @@ class IntegerRuleTest extends TestCase
     public static function  providerValidationCase(): array
     {
         return [
-            'valid positive' => [['age' => '123'], 'age', true],
-            'valid positive' => [['age' => '-58'], 'age', true],
-            'valid positive' => [['age' => '+99'], 'age', true],
-            'valid positive' => [['age' => '12.5'], 'age', false],
-            'valid positive' => [['age' => 'abc'], 'age', false],
-            'valid positive' => [['age' => ''], 'age', false],
+            'integer string positive' => [['age' => '123'], 'age', true],
+            'integer string negative' => [['age' => '-58'], 'age', true],
+            'integer string plus' => [['age' => '+99'], 'age', true],
+            'integer float string' => [['age' => '12.5'], 'age', false],
+            'integer non-numeric string' => [['age' => 'abc'], 'age', false],
+            'integer empty string' => [['age' => ''], 'age', false],
+            'integer zero string' => [['age' => '0'], 'age', true],
+            'integer zero int' => [['age' => 0], 'age', true],
+            'integer positive int' => [['age' => 42], 'age', true],
+            'integer negative int' => [['age' => -7], 'age', true],
+            'integer float number' => [['age' => 12.5], 'age', false],
+            'integer null' => [['age' => null], 'age', false],
+            'integer string with spaces' => [['age' => ' 123 '], 'age', false],
         ];
     }
 }

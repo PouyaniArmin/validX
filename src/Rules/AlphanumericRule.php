@@ -20,6 +20,9 @@ class AlphanumericRule implements RuleInterface
      */
     public function validate(array $data, string $field, ...$params): bool
     {
+        if (!is_string($data[$field])) {
+            return false;
+        }
         $pattern = '/^[A-Za-z0-9]+$/';
         if (preg_match($pattern, $data[$field])) {
             return true;

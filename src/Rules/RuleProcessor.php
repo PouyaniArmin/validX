@@ -93,14 +93,18 @@ class RuleProcessor
             throw new Exception("Reflection for rule not set. Did you forget to call ruleName()?");
         }
 
-        if ($this->obj instanceof UniqueRule && $this->db === null) {
-            throw new Exception("Database not set for UniqueRule.");
-        }
+        try {
+            if ($this->obj instanceof UniqueRule && $this->db === null) {
+                throw new Exception("Database not set for UniqueRule.");
+            }
 
-        $pass = $this->obj->validate($data, $field, ...$params);
+            $pass = $this->obj->validate($data, $field, ...$params);
 
-        if (!$pass) {
-            return $this->obj->message($field, ...$params);
+            if (!$pass) {
+                return $this->obj->message($field, ...$params);
+            }
+        } catch (Exception $e) {
+            return "Validation failed for '$field': " . $e->getMessage();
         }
     }
 }

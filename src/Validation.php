@@ -10,7 +10,7 @@ class Validation
     protected $db;
 
     // Constructor: store database connection
-    public function __construct($db)
+    public function __construct($db=null)
     {
         $this->db=$db;
     }

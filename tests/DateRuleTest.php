@@ -23,9 +23,14 @@ class DateRuleTest extends TestCase
     public static function providerValidationCase(): array
     {
         return [
-            'valid date' => [['birthdate' => '2025-08-17'], 'birthdate', true],
-            'invalid date' => [['birthdate' => '2025-13-40'], 'birthdate', false],
-            'worang format' => [['birthdate' => '17-08-2025'], 'birthdate', false]
+            'valid date'        => [['birthdate' => '2025-08-17'], 'birthdate', true],
+            'invalid date'      => [['birthdate' => '2025-13-40'], 'birthdate', false],
+            'wrong format'      => [['birthdate' => '17-08-2025'], 'birthdate', false],
+            'empty string'      => [['birthdate' => ''], 'birthdate', false],
+            'field missing'     => [[], 'birthdate', false],
+            'null value'        => [['birthdate' => null], 'birthdate', false],
+            'numeric value'     => [['birthdate' => 20250817], 'birthdate', false],
+            'non-string value'  => [['birthdate' => ['2025-08-17']], 'birthdate', false],
         ];
     }
 }

@@ -35,7 +35,7 @@ class FileTypeRule implements RuleInterface
         if (count($type) !== 2) {
             return false;
         }
-        $fileExtension = strtolower($type[1]);
+        $fileExtension = strtolower(trim($type[1]));
         // Check if file extension is in allowed list
         return in_array($fileExtension, $params, true);
     }

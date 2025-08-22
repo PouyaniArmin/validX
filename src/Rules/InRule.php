@@ -23,6 +23,9 @@ class InRule implements RuleInterface
      */
     public function validate(array $data, string $field, ...$params): bool
     {
+        if (!isset($data[$field])) {
+            return false;
+        }
         foreach ($params as $value) {
             if ($data[$field] == $value) {
                 return true;

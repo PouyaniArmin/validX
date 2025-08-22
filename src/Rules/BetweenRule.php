@@ -20,10 +20,11 @@ class BetweenRule implements RuleInterface
      */
     public function validate(array $data, string $field, ...$params): bool
     {
-        if (strlen($data[$field]) < $params[0] || strlen($data[$field]) > $params[1]) {
+        if (!isset($data[$field]) || is_array($data[$field])) {
             return false;
         }
-        return true;
+        $value = (string)$data[$field];
+        return strlen($value) >= $params[0] && strlen($value) <= $params[1];
     }
     /**
      * Returns the error message if validation fails.

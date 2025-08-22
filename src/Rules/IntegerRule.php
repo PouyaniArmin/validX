@@ -23,7 +23,9 @@ class IntegerRule implements RuleInterface
      */
     public function validate(array $data, string $field, ...$params): bool
     {
-
+        if (!isset($data[$field])) {
+            return false;
+        }
         $pattern = '/^[-+]?\d+$/';
         if (preg_match($pattern, $data[$field])) {
             return true;

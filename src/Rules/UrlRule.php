@@ -22,6 +22,9 @@ class UrlRule implements RuleInterface
      */
     public function validate(array $data, string $field, ...$params): bool
     {
+        if (!isset($data[$field])) {
+            return false;
+        }
         return filter_var($data[$field], FILTER_VALIDATE_URL);
     }
     /**

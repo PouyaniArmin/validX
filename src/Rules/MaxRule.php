@@ -27,7 +27,7 @@ class MaxRule implements RuleInterface
             return false;
         }
         if (!empty($value)) {
-            if (strlen($value) > $params[0]) {
+            if (mb_strlen($value) > $params[0]) {
                 return false;
             }
         }

@@ -27,7 +27,7 @@ class NumericRule implements RuleInterface
         if (!isset($data[$field]) || !is_string($data[$field])) {
             return false;
         }
-        $pattern = '/^\d+$/';
+        $pattern = '/\A[0-9]+\z/u';
         if (preg_match($pattern, $data[$field])) {
             return true;
         }

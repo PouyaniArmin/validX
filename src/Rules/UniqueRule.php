@@ -40,7 +40,7 @@ class UniqueRule implements RuleInterface
      */
     public function validate(array $data, string $field, ...$params): bool
     {
-        $table = $params[0];
+        $table = $params[0] ?? null;
         if (!$table) {
             throw new Exception("Table name must be provided for UniqueRule.");
         }

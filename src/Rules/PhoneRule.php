@@ -27,7 +27,7 @@ class PhoneRule implements RuleInterface
         if (!isset($data[$field]) || !is_string($data[$field])) {
             return false;
         }
-        $pattern = '/^\+?\d{5,17}$/';
+        $pattern = '/^\+?\d{5,17}\z/';
         if (preg_match($pattern, $data[$field])) {
             return true;
         }

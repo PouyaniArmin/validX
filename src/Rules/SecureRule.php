@@ -4,6 +4,8 @@ namespace Validx\Rules;
 
 use Validx\Message\ErrorMessage;
 
+use function PHPUnit\Framework\returnSelf;
+
 /**
  * SecureRule
  * 
@@ -28,8 +30,11 @@ class SecureRule implements RuleInterface
      */
     public function validate(array $data, string $field, ...$params): bool
     {
+        if (!isset($data[$field])) {
+            return false;
+        }
+        $pattern = "/^(?=.*\p{Lu})(?=.*\p{Ll})(?=.*\d)(?=.*[!@#$%&*])[^\s].{6,}[^\s]$/u";
 
-        $pattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%&*]).{8,}$/";
         if (preg_match($pattern, $data[$field], $matches)) {
             return true;
         }

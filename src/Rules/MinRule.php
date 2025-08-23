@@ -27,7 +27,7 @@ class MinRule implements RuleInterface
         if ($value === '') {
             return false;
         }
-        if (strlen($value) < $params[0]) {
+        if (mb_strlen($value) < $params[0]) {
             return false;
         }
         return true;

@@ -23,13 +23,16 @@ class MaxRuleTest extends TestCase
     public static function providerValidationCase(): array
     {
         return [
-            'vaild character' => [['password' => 'aW152?@'], 'password', 8, true],
+            'valid character' => [['password' => 'aW152?@'], 'password', 8, true],
             'max character' => [['password' => 'aW152?@!'], 'password', 8, true],
             'overflow character' => [['password' => 'aW152?@581'], 'password', 8, false],
-            'fail character' => [['password' => ''], 'password', 8, false],
+            'empty string' => [['password' => ''], 'password', 8, false],
             'spaces only' => [['password' => ' '], 'password', 8, false],
             'missing field' => [[], 'password', 8, false],
             'exact max' => [['password' => '12345678'], 'password', 8, true],
+            'shorter string' => [['password' => 'abc'], 'password', 8, true],
+            'whitespace inside' => [['password' => 'ab cd'], 'password', 8, true],
+            'long string' => [['password' => str_repeat('x', 20)], 'password', 8, false],
         ];
     }
 }

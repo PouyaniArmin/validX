@@ -32,6 +32,10 @@ class NumericRuleTest extends TestCase
             'alphanumeric string'    => [['number' => '12a'], 'number', false],
             'missing field'          => [[], 'number', false],
             'null value'             => [['number' => null], 'number', false],
+            'newline char'           => [['number' => "123\n"], 'number', false],
+            'tab char'               => [['number' => "456\t"], 'number', false],
+            'multibyte digits'       => [['number' => '١٢٣'], 'number', false], // Arabic digits
+            'emoji'                  => [['number' => '😊'], 'number', false],
         ];
     }
 }

@@ -20,10 +20,6 @@ class AlphanumericRuleTest extends TestCase
     }
     public static function providerValidationCase(): array
     {
-        // return [
-        //     'vaild alphanumeric'=>[['username'=>'Example125'],'username',true],
-        //     'invalid alphanumeric'=>[['username'=>'Exampl#-15e125'],'username',false]
-        // ];
         return [
             'valid alphanumeric lowercase' => [['username' => 'example123'], 'username', true],
             'valid alphanumeric uppercase' => [['username' => 'EXAMPLE123'], 'username', true],

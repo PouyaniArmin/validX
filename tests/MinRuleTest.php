@@ -23,14 +23,6 @@ class MinRuleTest extends TestCase
 
     public static function providerValidationCase(): array
     {
-        // return [
-        //     'vaild character' => [['password' => 'SE5'], 'password', 3, true],
-        //     'mix character' => [['password' => 'Se5F'], 'password', 3, true],
-        //     'fail character' => [['password' => ''], 'password', 3, false],
-        //     'spaces only' => [['password' => ' '], 'password', 3, false],
-        //     'missing field' => [[], 'password', 3, false],
-            
-        // ];
         return [
         'valid min length' => [['password' => 'SE'], 'password', 2, true],
         'valid longer string' => [['password' => 'Se5F'], 'password', 2, true],

@@ -15,9 +15,9 @@ interface RuleInterface
     /**
      * Validates the given field in the provided data.
      *
-     * @param array $data   The full dataset being validated
-     * @param string $field The field name to validate
-     * @param mixed ...$params Additional parameters for the rule
+     * @param array<string, mixed> $data   The full dataset being validated
+     * @param string $field         The field name to validate
+     * @param mixed ...$params      Additional parameters for the rule
      * @return bool True if validation passes, false otherwise
      */
     public function validate(array $data, string $field, ...$params): bool;

@@ -14,12 +14,13 @@ class FileTypeRule implements RuleInterface
     /**
      * Validate if the uploaded file's type is among allowed types.
      *
-     * @param array $data   Input data array
+     * @param array<string, array{name?:string,type?:string,tmp_name?:string,error?:int,size?:int}> $data
      * @param string $field Field name to validate
      * @param mixed ...$params Allowed file extensions
      * 
      * @return bool True if file type is allowed, false otherwise
      */
+
     public function validate(array $data, string $field, ...$params): bool
     {
         // Check if the field exists and is an array (file upload structure)

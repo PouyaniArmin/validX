@@ -17,7 +17,7 @@ class DateRule implements RuleInterface
     /**
      * Validate if the field value is a valid date.
      *
-     * @param array $data   Input data array
+     * @param array<string, mixed> $data
      * @param string $field Field name to validate
      * @param mixed ...$params Additional parameters (not used here)
      * 

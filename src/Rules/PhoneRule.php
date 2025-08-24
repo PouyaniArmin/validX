@@ -16,7 +16,7 @@ class PhoneRule implements RuleInterface
     /**
      * Validate if the field is a valid phone number.
      *
-     * @param array $data   Input data array
+     *@param array<string, mixed> $data
      * @param string $field Field name to validate
      * @param mixed ...$params Additional parameters (not used here)
      * 

@@ -17,7 +17,7 @@ use Validx\Exceptions\MissingValidateMethodException;
  */
 class RuleProcessor
 {
-    /** @var ReflectionClass The reflection instance for the current rule class */
+    /** @var ReflectionClass<\Validx\Rules\RuleInterface> */
     protected ReflectionClass $reflection;
 
     /** @var string The fully-qualified name of the rule class */
@@ -78,14 +78,11 @@ class RuleProcessor
     }
 
     /**
-     * Apply the loaded rule to a given field in the data array.
-     * Returns the error message if validation fails, otherwise null.
+     * @param array<string, mixed> $data Input data
+     * @param string $field Field name
+     * @param array<int, mixed> $params Parameters to pass to the rule
      *
-     * @param array $data Input data
-     * @param string $field Field name to validate
-     * @param array $params Parameters to pass to the rule
-     * @return string|null Error message if validation fails
-     * @throws Exception
+     * @return string|null
      */
     public function applyRule(array $data, string $field, array $params)
     {

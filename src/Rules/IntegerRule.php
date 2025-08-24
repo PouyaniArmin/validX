@@ -15,7 +15,7 @@ class IntegerRule implements RuleInterface
     /**
      * Validate if the field's value is an integer.
      *
-     * @param array $data   Input data array
+     *@param array<string, mixed> $data
      * @param string $field Field name to validate
      * @param mixed ...$params Not used
      * 

@@ -14,7 +14,7 @@ class MaxRule implements RuleInterface
     /**
      * Validate if the field's length is less than or equal to the maximum allowed length.
      *
-     * @param array $data   Input data array
+     * @param array<string, mixed> $data
      * @param string $field Field name to validate
      * @param mixed ...$params First parameter should be the maximum length
      * 

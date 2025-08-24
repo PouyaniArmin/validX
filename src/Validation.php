@@ -2,26 +2,37 @@
 
 namespace Validx;
 
-use ReflectionClass;
+use PDO;
 use Validx\Rules\RuleProcessor;
 
 class Validation
 {
-    protected $db;
+    protected ?PDO $db;
 
     // Constructor: store database connection
-    public function __construct($db=null)
+    public function __construct(?PDO $db = null)
     {
-        $this->db=$db;
+        $this->db = $db;
     }
 
-    // Main method to validate data against rules
-    public function validate(array $data, array $rules)
+    /**
+     * Validate data against rules.
+     *
+     * @param array<string, mixed> $data   Input data, key = field name, value = field value
+     * @param array<string, string> $rules Validation rules, key = field name, value = rule string
+     * 
+     * @return array<string, string[]> List of errors per field
+     */
+    public function validate(array $data, array $rules): array
     {
         $errors = [];
 
         // Helper function to split string and trim spaces
         $split = fn($str, $separator) => array_map('trim', explode($separator, $str));
+
+        // Create RuleProcessor for current rule
+        $ruleReflection = new RuleProcessor;
+        $ruleReflection->setDatabase($this->db);
 
         // Iterate over each field and its rules
         foreach ($rules as $field => $option) {
@@ -38,12 +49,8 @@ class Validation
                     $rule_name = trim($rule); // Only rule name
                 }
 
-                // Create RuleProcessor for current rule
-                $ruleReflection = new RuleProcessor;
-                $ruleReflection->setDatabase($this->db);
-
                 // Apply rule to data
-                $error = $ruleReflection->ruleName($rule_name)->applyRule($data,$field,$params);
+                $error = $ruleReflection->ruleName($rule_name)->applyRule($data, $field, $params);
 
                 // If validation fails, add error to list
                 if (!empty($error)) {

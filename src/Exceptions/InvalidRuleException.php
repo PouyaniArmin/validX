@@ -8,7 +8,7 @@ use Exception;
  * Exception thrown when an invalid validation rule is used.
  * Implements ExecptionInterface to provide standardized throwWith() method.
  */
-class InvalidRuleException extends Exception implements ExecptionInterface
+class InvalidRuleException extends Exception implements ExceptionInterface
 {
     /**
      * Throws an InvalidRuleException with the provided context message.

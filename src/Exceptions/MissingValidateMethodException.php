@@ -8,7 +8,7 @@ use Exception;
  * Exception thrown when a required validation method is missing.
  * Implements ExecptionInterface to provide standardized throwWith() method.
  */
-class MissingValidateMethodException extends Exception implements ExecptionInterface
+class MissingValidateMethodException extends Exception implements ExceptionInterface
 {
     /**
      * Throws a MissingValidateMethodException with the provided context message.

@@ -14,7 +14,7 @@ class MinRule implements RuleInterface
     /**
      * Validate if the field's length is greater than or equal to the minimum required length.
      *
-     * @param array $data   Input data array
+     * @param array<string, mixed> $data
      * @param string $field Field name to validate
      * @param mixed ...$params First parameter should be the minimum length
      * 

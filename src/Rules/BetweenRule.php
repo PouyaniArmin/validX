@@ -13,7 +13,7 @@ class BetweenRule implements RuleInterface
     /**
      * Validates whether the field's length is within the given range.
      *
-     * @param array $data   The dataset being validated
+     * @param array<string, mixed> $data
      * @param string $field The field name to validate
      * @param mixed ...$params Expected: [min, max]
      * @return bool True if the field's length is within the range, false otherwise

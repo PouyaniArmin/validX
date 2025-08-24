@@ -12,7 +12,6 @@ interface ExceptionInterface{
      *
      * @param string $context Description of the error or context
      * @return void
-     * @throws Exception
      */
     public static function throwWith(string $context):void;
 }

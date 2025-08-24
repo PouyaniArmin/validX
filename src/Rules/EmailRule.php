@@ -14,7 +14,7 @@ class EmailRule implements RuleInterface
     /**
      * Validate if the field value is a valid email address.
      *
-     * @param array $data   Input data array
+     * @param array<string, mixed> $data
      * @param string $field Field name to validate
      * @param mixed ...$params Additional parameters (not used here)
      * 
@@ -25,7 +25,7 @@ class EmailRule implements RuleInterface
         if (!isset($data[$field])) {
             return false;
         }
-        return filter_var($data[$field], FILTER_VALIDATE_EMAIL);
+        return filter_var($data[$field], FILTER_VALIDATE_EMAIL)!==false;
     }
     /**
      * Get the error message for invalid email values.

@@ -16,7 +16,7 @@ class NumericRule implements RuleInterface
     /**
      * Validate if the field contains only numbers.
      *
-     * @param array $data   Input data array
+     * @param array<string, mixed> $data
      * @param string $field Field name to validate
      * @param mixed ...$params Additional parameters (not used here)
      * 

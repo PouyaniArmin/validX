@@ -12,14 +12,13 @@ use Validx\Message\ErrorMessage;
 class UrlRule implements RuleInterface
 {
     /**
-     * Validate the field value as a URL.
-     *
-     * @param array $data Input data array
+     * @param array<string, string> $data Input data array
      * @param string $field Field name to validate
      * @param mixed ...$params Additional parameters (not used)
-     * 
+     *
      * @return bool True if the value is a valid URL, false otherwise
      */
+
     public function validate(array $data, string $field, ...$params): bool
     {
         if (!isset($data[$field])) {

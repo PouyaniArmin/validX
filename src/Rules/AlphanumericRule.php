@@ -13,7 +13,7 @@ class AlphanumericRule implements RuleInterface
     /**
      * Validates whether the given field contains only letters and numbers.
      *
-     * @param array $data   The dataset being validated
+     * @param array<string, string|null> $data
      * @param string $field The field name to validate
      * @param mixed ...$params Not used in this rule
      * @return bool True if the value is alphanumeric, false otherwise

@@ -15,7 +15,7 @@ class MaxfileSizeRule implements RuleInterface
     /**
      * Validate if the file's size is less than or equal to the maximum allowed size.
      *
-     * @param array $data   Input data array (expects file array with 'size')
+     * @param array<string, mixed> $data (expects file array with 'size')
      * @param string $field Field name containing the file
      * @param mixed ...$params First parameter should be the maximum allowed size
      * 

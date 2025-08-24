@@ -15,7 +15,7 @@ class InRule implements RuleInterface
     /**
      * Validate if the field's value exists in the allowed list.
      *
-     * @param array $data   Input data array
+     * @param array<string, mixed> $data
      * @param string $field Field name to validate
      * @param mixed ...$params Allowed values
      * 
